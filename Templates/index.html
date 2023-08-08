@@ -1,0 +1,125 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo App</title>
+</head>
+<body>
+    <h1>Todo List</h1>
+    <ul>
+        {% for todo in todos %}
+        <li>
+            <span {% if todo['done'] %}style="text-decoration: line-through"{% endif %}>
+                {{ todo['task'] }}
+            </span>
+            <a href="{{ url_for('check', index=loop.index-1) }}">[Check]</a>
+            <a href="{{ url_for('edit', index=loop.index-1) }}">[Edit]</a>
+            <a href="{{ url_for('delete', index=loop.index-1) }}">[Delete]</a>
+        </li>
+        {% endfor %}
+    </ul>
+    <h2>Add New Task</h2>
+    <form action="{{ url_for('add') }}" method="post">
+        <input type="text" name="todo" placeholder="Enter new task" required>
+        <input type="submit" value="Add Task">
+    </form>
+</body>
+</html> -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo App</title>
+    <style>
+        /* Global Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        a {
+            text-decoration: none;
+            color: #007bff;
+            margin-left: 10px;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* Todo Styles */
+        span {
+            display: inline-block;
+            margin-right: 10px;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .task-done {
+            text-decoration: line-through;
+        }
+
+        .add-task-form {
+            display: flex;
+            align-items: center;
+            margin-top: 10px;
+        }
+
+        .add-task-input {
+            padding: 5px;
+            width: 200px;
+            flex-grow: 1;
+        }
+
+        .add-task-btn {
+            padding: 5px 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Todo List</h1>
+    <ul>
+        {% for todo in todos %}
+        <li>
+            <span {% if todo['done'] %}class="task-done"{% endif %}>
+                {{ todo['task'] }}
+            </span>
+            <a href="{{ url_for('check', index=loop.index-1) }}">[Check]</a>
+            <a href="{{ url_for('edit', index=loop.index-1) }}">[Edit]</a>
+            <a href="{{ url_for('delete', index=loop.index-1) }}">[Delete]</a>
+        </li>
+        {% endfor %}
+    </ul>
+    <h2>Add New Task</h2>
+    <form class="add-task-form" action="{{ url_for('add') }}" method="post">
+        <input class="add-task-input" type="text" name="todo" placeholder="Enter new task" required>
+        <input class="add-task-btn" type="submit" value="Add Task">
+    </form>
+</body>
+</html>
+

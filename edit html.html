@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title }}</title> <!-- Corrected 'Title' to '{{ title }}' to render the dynamic title properly -->
+</head>
+
+<body>
+    <form action="{{ url_for('edit', index=index) }}" method="post"> <!-- Corrected missing closing double quote -->
+        <input type="text" name="todo" value="{{ todo['task'] }}"> <!-- Added missing closing double quote -->
+        <button type="submit">Save</button>
+    </form>
+</body>
+
+</html>
